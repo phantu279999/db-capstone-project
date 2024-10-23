@@ -1,0 +1,9 @@
+CREATE VIEW OrdersView AS SELECT * FROM Orders;
+
+
+SELECT c.CustomerID, c.CustomerName, o.OrderID, o.TotalCost, m.MenuName FROM Customers c
+INNER JOIN Orders o ON o.CustomerID = c.CustomerID
+INNER JOIN Menus m ON m.MenuID = o.MenuID
+
+
+SELECT * FROM Orders WHERE Quantity > ANY(SELECT Quantity FROM Orders WHERE Quantity > 2);

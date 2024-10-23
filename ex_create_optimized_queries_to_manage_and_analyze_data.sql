@@ -1,0 +1,18 @@
+DELIMITER //
+CREATE PROCEDURE GetMaxQuantity()
+BEGIN
+SELECT MAX(Quantity) FROM Orders;
+END //
+DELIMITER;
+
+
+
+PREPARE GetOrderDetail 'SELECT * FROM Orders WHERE OrderID = ?';
+
+
+DELIMITER //
+CREATE PROCEDURE CancelOrder(IN orderid INT)
+BEGIN
+SELECT * FROM Orders WHERE OrderID = @orderid;
+END //
+DELIMITER;
